@@ -12,4 +12,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // On Vercel (VERCEL=1 in their CI) build with Nitro's vercel preset -> .vercel/output.
+  // Inside Lovable the platform pins its own preset, so this is ignored there.
+  nitro: process.env["VERCEL"] ? { preset: "vercel" } : true,
 });
